@@ -6,7 +6,7 @@ class AuthService {
             axios.post('/api/login', {email, password})
             .then(response => {
                 if (response.data.user) {
-                    this.setUser(response.data.user);
+                    this.setToken('JWT');
                     resolve(response.data.user);
                 }
                 else {
@@ -19,16 +19,31 @@ class AuthService {
         })
     }
 
-    setUser = (user) => {
-        localStorage.setItem('USER', JSON.stringify(user));
+    signInwithToken = () => {
+        return new Promise((resolve, reject) => {
+            axios.post('/api/login/me') // envio o token pelo header
+            .then(response => {
+                if (response.data.user) {
+                    resolve(response.data.user);
+                }
+                else {
+                    reject(response.data.error);
+                }
+            })
+            .catch(error => {
+                reject(error)
+            })
+        })
     }
 
-    getUser = () => {
-        const user = localStorage.getItem('USER');
-        return user;
+    sigOut = () => {
+        this.removeToken();
     }
 
-    isAuthenticated = () => !!this.getUser();
+    setToken = (token) => localStorage.setItem('accessToken', token);
+    getToken = () => localStorage.getItem('accessToken');
+    isAuthenticated = () => !!this.getToken();
+    removeToken = () => localStorage.removeItem('accessToken');
     
 }
 

@@ -1,5 +1,14 @@
 import mock from '../utils/mock';
 
+mock.onPost('/api/login/me').reply(200, {
+    user: {
+        'id': 1,
+        'username': 'gabriel',
+        'email': 'gabriel.lemos@gmail.com'
+    }
+})
+
+
 mock.onPost('/api/login').reply((request) => {
 
     const { email, password } = JSON.parse(request.data);
