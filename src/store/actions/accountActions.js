@@ -1,4 +1,3 @@
-import { RestaurantTwoTone } from "@material-ui/icons";
 import authService from "../../services/authService";
 
 export const LOGIN_SUCCESS = '@ACCOUNT/LOGIN_SUCCESS';

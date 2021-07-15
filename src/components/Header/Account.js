@@ -45,10 +45,10 @@ export default function Account () {
       ?
       <Menu
         anchorEl={ref.current}
-        anchorOrigin={{
-          vertical: 'buttom',
-          horizontal: 'center',
-        }}
+        //anchorOrigin={{
+        //  vertical: 'buttom',
+        //  horizontal: 'center',
+        //}}
         getContentAnchorEl={null}
         open={isMenuOpen}
         onClose={handleMenuClose}
@@ -62,10 +62,10 @@ export default function Account () {
       :
       <Menu
       anchorEl={ref.current}
-      anchorOrigin={{
-        vertical: 'buttom',
-        horizontal: 'center',
-      }}
+      //anchorOrigin={{
+      //  vertical: 'buttom',
+      //  horizontal: 'center',
+      //}}
       getContentAnchorEl={null}
       open={isMenuOpen}
       onClose={handleMenuClose}

@@ -17,16 +17,16 @@ const useStyles = makeStyles((theme) => ({
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
     },
-    logo: {
-      maxWidth: 90,
-      marginRight: '10px'
-    }
+    //logo: {
+    //  maxWidth: 90,
+    //  marginRight: '10px'
+    //}
   }));
 
 function Header() {
 
   const classes = useStyles();
-  const logo = 'https://vimansca.com.br/images/common/head/LogotipoVIMANCabecalho.png';
+  //const logo = 'https://vimansca.com.br/images/common/head/LogotipoVIMANCabecalho.png';
 
   return (
     <AppBar position="fixed" className={classes.appBar}>

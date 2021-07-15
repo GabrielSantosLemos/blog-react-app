@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import { Button, TextField, Link } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { signIn } from '../../store/actions/accountActions';
 
