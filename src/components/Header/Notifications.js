@@ -12,8 +12,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
-import WorkIcon from '@material-ui/icons/Work';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import PeopleIcon from '@material-ui/icons/People';
+import { Box, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,12 +24,23 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
+  icon: {
+    background: theme.palette.secondary.main,
+    color: theme.palette.secondary.contrastText
+  }
 }));
+
+const iconsMap = {
+  reviews: StarBorderIcon,
+  new_comment: ChatBubbleOutlineIcon,
+  like: FavoriteIcon,
+  connection: PeopleIcon
+}
 
 export default function Notification () {
 
   const classes = useStyles();
-  const notifications = useSelector(state => state.notifications); 
+  const notifications = useSelector(state => state.notifications.notifications); 
   console.log(notifications);
 
   const account = useSelector(state => state.account);
@@ -62,31 +76,36 @@ export default function Notification () {
               onClose={handleClose}
               open={isOpen}
               anchorEl={ref.current}
-              //anchorOrigin={{
-              //  vertical: 'bottom',
-              //  horizontal: 'left',
-              //}}
-              //transformOrigin={{
-              //  vertical: 'top',
-              //  horizontal: 'right',
-              //}}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
           >
-            {/* <List className={classes.root}> */}
-            {
-              notifications.map((notification) => (
-                <ListItem>
+            <Box p={2}>
+              <Typography variant="h6" color="textPrimary">
+                Notificações
+              </Typography>
+            </Box>
+            <List className={classes.root}>
+            {notifications.map((notification) => {
+              const Icon = iconsMap[notification.type];
+              return (
+                <ListItem key={notification.id}>
                 <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
+                  <Avatar className={classes.icon}>
+                    <Icon/>
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText 
                 primary={notification.title}
-                 secondary={notification.description} />
+                secondary={notification.description} />
               </ListItem>
-              ))
-            }
-            {/* </List> */}
+            )})}
+            </List>
           </Popover>
           </>
       )

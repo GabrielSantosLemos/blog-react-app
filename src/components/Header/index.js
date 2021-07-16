@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 import Notification from './Notifications';
 import Account from './Account';
+import WritePost from './WritePost';
 
 const useStyles = makeStyles((theme) => ({
     menuButton: {
@@ -35,6 +36,7 @@ function Header() {
           <Typography variant="h6" className={classes.title}>
             Blog
           </Typography>
+          <WritePost/>
           <Notification />
           <Account />
         </Toolbar>

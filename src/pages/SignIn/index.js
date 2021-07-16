@@ -1,33 +1,13 @@
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import { Button, TextField, Link } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import { Button, TextField, Link } from '@material-ui/core';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
 import { signIn } from '../../store/actions/accountActions';
 
 const useStyles = makeStyles((theme) => ({
-
-  // root: {
-  //   display: 'flex',
-  //   height: '100vh'
-  // },
-
-  // imagem: {
-  //   background: 'blue',
-  //   flexBasis: '60%',
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-  // },
-
-  // form: {
-  //   background: 'red',
-  //   flexBasis: '40%'
-  // }
-
   root: {
     height: '100vh'
   },
@@ -52,6 +32,7 @@ export default function SignIn() {
 
   async function handlerSignIn() {
     try {
+      console.log("modulo");
       await dispatch(signIn('gabriel.lemos1001@gmail.com', 'admin123'));
       navigate('/');
     }
@@ -61,19 +42,6 @@ export default function SignIn() {
   }
 
   return (
-
-    // <div className={classes.root}>
-    //   <div className={classes.imagem}>
-    //     <h2>Título</h2>
-    //     <h4>Subtítulo</h4>
-
-    //     IMAGEM
-    //   </div>
-    //   <div className={classes.form}>
-    //     FORM
-    //   </div>
-    // </div>
-
     <Grid container className={classes.root}>
       <Grid 
       className={classes.image}
@@ -85,7 +53,6 @@ export default function SignIn() {
       container
       justifyContent='center'
       alignItems='center'
-      //xs={4}
       >
         <Box
           display="flex"
@@ -131,6 +98,5 @@ export default function SignIn() {
           </Box>
       </Grid>
     </Grid>
-
   )
 }
