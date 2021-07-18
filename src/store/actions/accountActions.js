@@ -6,7 +6,6 @@ export const SIGNOUT = '@ACCOUNT/SIGNOUT';
 
 const signIn = (email, password) => {
     return async (dispatch) => {
-        console.log("action");
         const user = await authService.signIn(email, password);
         dispatch({
             type: LOGIN_SUCCESS,

@@ -8,7 +8,6 @@ const accountReducer = (state = INITIAL_STATE, action) => {
     
     switch(action.type) {
         case LOGIN_SUCCESS: {
-            console.log("reducer");
             return {
                 ...state,
                 user: action.payload.user

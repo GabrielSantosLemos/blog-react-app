@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import Auth from './components/Auth';
 import store from './store';
-import GuestRoute from './routes/GuestRoute';
+import PrivateRoutes from './routes/PrivateRoutes';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import NewPost from './pages/Post';
@@ -17,7 +17,7 @@ function App() {
         <Auth>
           <Routes>
             <Route path="/" exact={true} element={<Home />} />
-            <GuestRoute path="/sign-in" element={<SignIn />} />
+            <PrivateRoutes path="/sign-in" element={<SignIn />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/post/new" element={<NewPost />} />
             <Route path="*" element={<h1>404</h1>} />

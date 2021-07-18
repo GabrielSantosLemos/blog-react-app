@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { getNotifications } from '../../store/actions/notificationsActions';
 import { makeStyles } from '@material-ui/core/styles';
+import { Box, Typography } from '@material-ui/core';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import IconButton from '@material-ui/core/IconButton';
 import Popover from '@material-ui/core/Popover';
@@ -11,12 +10,12 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PeopleIcon from '@material-ui/icons/People';
-import { Box, Typography } from '@material-ui/core';
+
+import { getNotifications } from '../../store/actions/notificationsActions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,8 +40,6 @@ export default function Notification () {
 
   const classes = useStyles();
   const notifications = useSelector(state => state.notifications.notifications); 
-  console.log(notifications);
-
   const account = useSelector(state => state.account);
   const isAuthenticated = !!account.user;
   const [isOpen, setOpen] = useState(false);
@@ -76,17 +73,11 @@ export default function Notification () {
               onClose={handleClose}
               open={isOpen}
               anchorEl={ref.current}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
+              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              transformOrigin={{ vertical: "top", horizontal: "center" }}
           >
-            <Box p={2}>
-              <Typography variant="h6" color="textPrimary">
+            <Box p={2} pb={0}>
+              <Typography color="textPrimary">
                 Notificações
               </Typography>
             </Box>

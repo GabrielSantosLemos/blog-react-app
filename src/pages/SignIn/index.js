@@ -32,7 +32,6 @@ export default function SignIn() {
 
   async function handlerSignIn() {
     try {
-      console.log("modulo");
       await dispatch(signIn('gabriel.lemos1001@gmail.com', 'admin123'));
       navigate('/');
     }

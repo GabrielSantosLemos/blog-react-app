@@ -25,7 +25,7 @@ mock.onGet('/api/notifications').reply(200, {
             createdAt: moment().subtract(3, 'days').toDate().getTime(),
           },
           {
-            id: '5e8883fca0e8612044248ecf',
+            id: '5e8883ffghfghfghfghfghhf',
             title: 'Novos seguidores',
             description: '2 devs começaram a seguir você',
             type: 'connection',
