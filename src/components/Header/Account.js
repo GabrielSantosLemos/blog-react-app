@@ -1,22 +1,20 @@
 import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import IconButton from '@material-ui/core/IconButton';
+import { Menu, Avatar } from '@material-ui/core';
 
 import { signOut } from '../../store/actions/accountActions';
 
 export default function Account () {
 
-  const [isMenuOpen, setMenuOpen] = useState(false);
-  const ref = useRef();
   const dispatch = useDispatch();
   const account = useSelector(state => state.account);
   const isAuthenticated = !!account.user;
   const navigate = useNavigate();
-
+  
+  const ref = useRef();
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const handleMenuOpen = () => {
     setMenuOpen(true);
   };
@@ -33,13 +31,11 @@ export default function Account () {
 
   return(
   <>
-    <IconButton
+    <Avatar
       ref={ref}
       onClick={handleMenuOpen}
-      color="inherit"
-    >
-      <AccountCircle />
-    </IconButton>
+      src={account.user && account.user.avatar}
+    />
 
     {
       isAuthenticated

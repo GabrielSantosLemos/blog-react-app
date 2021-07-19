@@ -4,7 +4,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDropzone } from 'react-dropzone';
 import ReactMarkdown from 'react-markdown';
-//import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,7 +43,8 @@ export default function NewPost() {
 
     const classes = useStyles();
 
-    //const user = useSelector(state => state.user);
+    const account = useSelector(state => state.account);
+    console.log(account);
 
     const arrayTags = [
         { title: 'react.js' },
@@ -114,10 +115,13 @@ export default function NewPost() {
 
                 <Box display="flex" alignItems="center">
                     <Box>
-                        <Avatar className={classes.avatar} />
+                        <Avatar 
+                        className={classes.avatar}
+                        src={account.user?.avatar}
+                        />
                     </Box>
                     <Box>
-                        <Typography>Gabriel Lemos</Typography>
+                        <Typography>{account.user?.name}</Typography>
                         <Typography color="textSecondary">10 meses atrás</Typography>
                     </Box>
                 </Box>
