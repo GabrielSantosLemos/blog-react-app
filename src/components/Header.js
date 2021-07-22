@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Menu, Avatar } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
 
 import { signOut } from '../store/actions/accountActions';
 
@@ -20,9 +21,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header(props) {
+export default function Header() {
 
-  const {title } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
   const account = useSelector(state => state.account);
@@ -47,29 +47,45 @@ export default function Header(props) {
 
   return (
     <React.Fragment>
-      <Toolbar className={classes.toolbar}>
+      <Container maxWidth="lg">
+        <Toolbar className={classes.toolbar}>
 
-        <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          align="left"
-          noWrap
-          className={classes.toolbarTitle}
-        >
-          {title}
-        </Typography>
+          <Typography
+            component="h2"
+            variant="h5"
+            color="inherit"
+            align="left"
+            noWrap
+            className={classes.toolbarTitle}
+          >
+            Blog
+          </Typography>
 
-        <Avatar
-          ref={ref}
-          onClick={handleMenuOpen}
-          src={account.user && account.user.avatar}
-        />
+          <Avatar
+            ref={ref}
+            onClick={handleMenuOpen}
+            src={account.user && account.user.avatar}
+          />
 
-        {
-          isAuthenticated
-          ?
-          <Menu
+          {
+            isAuthenticated
+            ?
+            <Menu
+              anchorEl={ref.current}
+              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              transformOrigin={{ vertical: "top", horizontal: "center" }}
+              getContentAnchorEl={null}
+              open={isMenuOpen}
+              onClose={handleMenuClose}
+              >
+                <MenuItem>Perfil</MenuItem>
+                <MenuItem>Meus Favoritos</MenuItem>
+                <MenuItem>Meus Posts</MenuItem>
+                <MenuItem>Minha conexõs</MenuItem>
+                <MenuItem onClick={handleSignOut}>Sair</MenuItem>
+            </Menu>
+            :
+            <Menu
             anchorEl={ref.current}
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             transformOrigin={{ vertical: "top", horizontal: "center" }}
@@ -77,27 +93,12 @@ export default function Header(props) {
             open={isMenuOpen}
             onClose={handleMenuClose}
             >
-              <MenuItem>Perfil</MenuItem>
-              <MenuItem>Meus Favoritos</MenuItem>
-              <MenuItem>Meus Posts</MenuItem>
-              <MenuItem>Minha conexõs</MenuItem>
-              <MenuItem onClick={handleSignOut}>Sair</MenuItem>
-          </Menu>
-          :
-          <Menu
-          anchorEl={ref.current}
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-          transformOrigin={{ vertical: "top", horizontal: "center" }}
-          getContentAnchorEl={null}
-          open={isMenuOpen}
-          onClose={handleMenuClose}
-          >
-            <MenuItem>Registrar</MenuItem>
-            <MenuItem>Entrar</MenuItem>
-          </Menu>
-        }
-
-      </Toolbar>
+              <MenuItem>Registrar</MenuItem>
+              <MenuItem>Entrar</MenuItem>
+            </Menu>
+          }
+        </Toolbar>
+      </Container>
     </React.Fragment>
   );
 }

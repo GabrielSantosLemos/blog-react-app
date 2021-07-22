@@ -1,16 +1,21 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
-import Home from '../pages/Home'
-import Post from '../pages/Post'
-import SignIn from '../pages/SignIn'
+import PrivateRoutes from '../routes/PrivateRoutes';
+import Home from '../pages/Home';
+import SignIn from '../pages/SignIn';
+import NewPost from '../pages/Post';
 
-const Routes = () => (
+const Routess = () => (
     <BrowserRouter>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/post" component={Post} />
-        <Route exact path="/sign-in" component={SignIn} />
+        <Routes>
+            <Route path="/" exact={true} element={<Home />} />
+            <PrivateRoutes path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/post/new" element={<NewPost />} />
+            <Route path="*" element={<h1>404</h1>} />
+        </Routes>
     </BrowserRouter>
 );
 
-export default Routes
+export default Routess
