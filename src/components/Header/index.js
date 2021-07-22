@@ -4,9 +4,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
-import Notification from './Header/Notifications';
-import WritePost from './Header/WritePost';
-import Account from './Header/Account';
+import Notification from '../Header/Notifications';
+import WritePost from '../Header/WritePost';
+import Account from '../Header/Account';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
