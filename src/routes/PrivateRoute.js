@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import Home from '../pages/Home';
 
-function PrivateRoutes({element: Component, ...rest}) {
+function PrivateRoute({element: Component, ...rest}) {
     const account = useSelector(state => state.account);
     const isAuthenticated = Boolean(account.user);
 
@@ -17,4 +17,4 @@ function PrivateRoutes({element: Component, ...rest}) {
     )
 }
 
-export default PrivateRoutes;
+export default PrivateRoute;
