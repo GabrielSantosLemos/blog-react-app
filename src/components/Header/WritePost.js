@@ -12,7 +12,7 @@ export default function WritePost() {
     return (
         <Button 
         variant="contained" 
-        color="secondary"
+        color="primary"
         onClick={handlerClick}
         >
             Novo Post

@@ -34,12 +34,13 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    //backgroundImage: 'url(https://source.unsplash.com/random)',
+    //backgroundRepeat: 'no-repeat',
+    //backgroundColor:
+    //  theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    //backgroundSize: 'cover',
+    //backgroundPosition: 'center',
+    backgroundColor: theme.palette.primary.light
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -89,7 +90,7 @@ export default function SignInSide() {
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
-              variant="outlined"
+              //variant="outlined"
               margin="normal"
               required
               fullWidth
@@ -100,7 +101,7 @@ export default function SignInSide() {
               autoFocus
             />
             <TextField
-              variant="outlined"
+              //variant="outlined"
               margin="normal"
               required
               fullWidth

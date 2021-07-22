@@ -26,18 +26,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Footer(props) {
+export default function Footer() {
   const classes = useStyles();
-  const { description, title } = props;
 
   return (
     <footer className={classes.footer}>
       <Container maxWidth="lg">
         <Typography variant="h6" align="center" gutterBottom>
-          {title}
+          Footer
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          {description}
+          Something here to give the footer a purpose!
         </Typography>
         <Copyright />
       </Container>
