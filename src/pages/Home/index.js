@@ -6,7 +6,7 @@ import Theme from '../../Theme';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
-    background: 'blue'
+    //background: 'blue'
   }
 }));
 
@@ -18,6 +18,7 @@ export default function Home() {
     <Theme>
       <Container maxWidth="lg">
         <Grid container className={classes.mainGrid}>
+          Home
           <br />
           <br />
           <br />

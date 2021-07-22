@@ -1,41 +1,47 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
-import Notification from './Notifications';
-import Account from './Account';
-import WritePost from './WritePost';
+import Notification from './Header/Notifications';
+import WritePost from './Header/WritePost';
+import Account from './Header/Account';
 
 const useStyles = makeStyles((theme) => ({
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-    appBar: {
-      zIndex: theme.zIndex.drawer + 1,
-    },
-  }));
+  toolbar: {
+    borderBottom: `1px solid ${theme.palette.divider}`,
+  },
+  toolbarTitle: {
+    flex: 1,
+  }
+}));
 
 function Header() {
 
   const classes = useStyles();
 
   return (
-    <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+    <React.Fragment>
+      <Container maxWidth="lg">
+        <Toolbar className={classes.toolbar}>
+          <Typography
+            component="h2"
+            variant="h5"
+            color="inherit"
+            align="left"
+            noWrap
+            className={classes.toolbarTitle}
+          >
             Blog
           </Typography>
-          <WritePost/>
-          <Notification />
+          <WritePost />
+          <Notification/>
           <Account />
         </Toolbar>
-    </AppBar>
+      </Container>
+    </React.Fragment>
   );
 }
 
-export default Header;
+export default Header; 
