@@ -1,11 +1,13 @@
 import { useCallback } from 'react';
-import { Button, Box, TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDropzone } from 'react-dropzone';
 
+import Title from './Title';
+
 const useStyles = makeStyles((theme) => ({
-    image: { 
+    image: {
         height: 100
     },
     textArea: {
@@ -18,8 +20,17 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Editor({image, setImage, title, setTitle, tags, setTags, markdownText, setmarkdownText}) {
-   
+export default function Editor({
+    image,
+    setImage,
+    title,
+    setTitle,
+    tags,
+    setTags,
+    markdownText,
+    setMarkdownText
+}) {
+
     const classes = useStyles();
 
     const arrayTags = [
@@ -30,6 +41,7 @@ export default function Editor({image, setImage, title, setTitle, tags, setTags,
     ]
 
     const onDrop = useCallback((acceptedFiles) => {
+        console.log(acceptedFiles);
         const file = acceptedFiles[0];
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -37,7 +49,7 @@ export default function Editor({image, setImage, title, setTitle, tags, setTags,
             const base64data = reader.result;
             setImage(base64data);
         }
-    },[]);
+    }, [setImage]);
 
     const { getRootProps, getInputProps } = useDropzone({
         onDrop,
@@ -45,9 +57,10 @@ export default function Editor({image, setImage, title, setTitle, tags, setTags,
         accept: 'image/*'
     })
 
-    return (
-        <Box width="50%" height="100%" padding={2} borderRight="1px solid #DDD">
+    console.log(setTitle);
 
+    return (
+        <>
             <div {...getRootProps()}>
                 <input {...getInputProps()} />
                 <Button>Carregar imagem</Button>
@@ -55,33 +68,30 @@ export default function Editor({image, setImage, title, setTitle, tags, setTags,
 
             {image && <img className={classes.image} src={image} alt="any" />}
 
-            <TextField 
-            id="title" 
-            placeholder="Título" 
-            fullWidth 
-            value={title} 
-            onChange={setTitle} 
+            <Title
+                title={title}
+                setTitle={setTitle}
             />
-
+            
             <Autocomplete
-            multiple
-            limitTags={2}
-            id="multiple-limit-tags"
-            options={arrayTags}
-            getOptionLabel={(option) => option.title}
-            value={tags}
-            onChange={setTags}
-            renderInput={(params) => (
-                <TextField {...params} variant="standard" placeholder="tags" />
-            )}
+                multiple
+                limitTags={2}
+                id="multiple-limit-tags"
+                options={arrayTags}
+                getOptionLabel={(option) => option.title}
+                value={tags}
+                onChange={setTags}
+                renderInput={(params) => (
+                    <TextField {...params} variant="standard" placeholder="tags" />
+                )}
             />
 
-            <textarea 
-            className={classes.textArea} 
-            value={markdownText}
-            onChange={setmarkdownText}
+            <textarea
+                className={classes.textArea}
+                value={markdownText}
+                onChange={setMarkdownText}
             >
             </textarea>
-        </Box>
+        </>
     )
 }
