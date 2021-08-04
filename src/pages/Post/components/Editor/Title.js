@@ -1,6 +1,13 @@
 import { TextField } from '@material-ui/core';
+import { usePost } from '../../PostContext';
 
-export default function Title({ title, setTitle }) {
+export default function Title() {
+
+    const {
+        title,
+        setTitle,
+    } = usePost();
+
     return (
         <TextField
             id="title"

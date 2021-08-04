@@ -3,6 +3,7 @@ import { Button, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDropzone } from 'react-dropzone';
+import { usePost } from '../../PostContext';
 
 import Title from './Title';
 
@@ -20,16 +21,16 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Editor({
-    image,
-    setImage,
-    title,
-    setTitle,
-    tags,
-    setTags,
-    markdownText,
-    setMarkdownText
-}) {
+export default function Editor() {
+
+    const {
+        image,
+        setImage,
+        tags,
+        setTags,
+        markdownText,
+        setMarkdownText
+    } = usePost();
 
     const classes = useStyles();
 
@@ -57,8 +58,6 @@ export default function Editor({
         accept: 'image/*'
     })
 
-    console.log(setTitle);
-
     return (
         <>
             <div {...getRootProps()}>
@@ -68,10 +67,7 @@ export default function Editor({
 
             {image && <img className={classes.image} src={image} alt="any" />}
 
-            <Title
-                title={title}
-                setTitle={setTitle}
-            />
+            <Title/>
             
             <Autocomplete
                 multiple

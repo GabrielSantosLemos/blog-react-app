@@ -2,6 +2,7 @@ import { Box, Typography, Divider, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactMarkdown from 'react-markdown';
 import { useSelector } from 'react-redux';
+import { usePost } from '../PostContext';
 
 const useStyles = makeStyles((theme) => ({
     avatar: {
@@ -9,14 +10,17 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Preview({
-    image,
-    title,
-    tags,
-    markdownText
-}) {
+export default function Preview() {
 
     const classes = useStyles();
+
+    const {
+        image,
+        title,
+        tags,
+        markdownText,
+    } = usePost();
+
     const account = useSelector(state => state.account);
 
     return (

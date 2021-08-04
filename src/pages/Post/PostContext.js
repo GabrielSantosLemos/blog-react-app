@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 export const PostContext = createContext();
 
@@ -34,4 +34,8 @@ export function PostProvider({ children }) {
         }} >
         {children}
     </PostContext.Provider>
+}
+
+export function usePost() {
+    return useContext(PostContext);
 }
