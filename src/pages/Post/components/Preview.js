@@ -7,7 +7,10 @@ import { usePost } from '../PostContext';
 const useStyles = makeStyles((theme) => ({
     avatar: {
         marginRight: theme.spacing(1)
-    }
+    },
+    imagePreview: {
+        width: '100%'
+    },
 }));
 
 export default function Preview() {

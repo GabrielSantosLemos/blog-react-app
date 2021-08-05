@@ -10,7 +10,8 @@ import Account from '../Header/Account';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    //borderBottom: `1px solid ${theme.palette.divider}`,
+    padding: '0px'
   },
   toolbarTitle: {
     flex: 1,

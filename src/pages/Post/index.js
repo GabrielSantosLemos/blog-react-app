@@ -5,6 +5,7 @@ import Theme from '../../Theme';
 import Editor from './components/Editor/index';
 import Preview from './components/Preview';
 import { PostProvider } from './PostContext';
+import { usePost } from './PostContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -12,18 +13,29 @@ const useStyles = makeStyles((theme) => ({
         //overflow: 'scroll',
         height: '100vh',
     },
-    appBar: {
+    appBar: { 
         top: 'auto',
         bottom: 0,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     button: {
         marginRight: theme.spacing(2)
-    },
+    }
 }));
 
 export default function NewPost() {
     const classes = useStyles();
+
+    const ctx = usePost();
+    const handleSaveDraft = () => {
+        // acessar backend e salvar rascunho
+    }
+
+    const handlePublish = () => {
+        // acessar backend e salvar rascunho
+    }
+
     return (
         <Theme>
             <PostProvider>
@@ -37,7 +49,7 @@ export default function NewPost() {
                             <Preview />
                         </Box>
                     </Box>
-                    <Toolbar>
+                    <Toolbar className={classes.appBar}>
                         <Button className={classes.button}>Salvar rascunho</Button>
                         <Button color="secondary" variant="outlined">Publicar</Button>
                     </Toolbar>
