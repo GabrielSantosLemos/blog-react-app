@@ -15,7 +15,6 @@ const AppRoutes = () => (
             <PrivateRoute path="/sign-in" element={<SignIn />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/post/new" element={<NewPost />} />
-            {/* <Route path="/post/:slug" element={<Post />} /> */}
             <Route path="*" element={<h1>404</h1>} />
         </Routes>
     </BrowserRouter>
