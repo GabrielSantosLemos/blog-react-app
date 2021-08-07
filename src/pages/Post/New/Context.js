@@ -36,6 +36,6 @@ export function PostProvider({ children }) {
     </PostContext.Provider>
 }
 
-export function usePost() {
+export function useNewContext() {
     return useContext(PostContext);
 }

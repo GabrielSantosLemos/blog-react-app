@@ -1,12 +1,12 @@
 import { TextField } from '@material-ui/core';
-import { usePost } from '../../PostContext';
+import { useNewContext } from '../../Context';
 
 export default function Title() {
 
     const {
         title,
         setTitle,
-    } = usePost();
+    } = useNewContext();
 
     return (
         <TextField

@@ -3,7 +3,7 @@ import { Button, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDropzone } from 'react-dropzone';
-import { usePost } from '../../PostContext';
+import { useNewContext } from '../../Context';
 
 import Title from './Title';
 
@@ -30,7 +30,7 @@ export default function Editor() {
         setTags,
         markdownText,
         setMarkdownText
-    } = usePost();
+    } = useNewContext();
 
     const classes = useStyles();
 

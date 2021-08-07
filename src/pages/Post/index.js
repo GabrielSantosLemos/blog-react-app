@@ -1,60 +1,29 @@
-import { Button, Toolbar, Box, Container } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import Theme from '../../Theme';
-import Editor from './components/Editor/index';
-import Preview from './components/Preview';
-import { PostProvider } from './PostContext';
-import { usePost } from './PostContext';
+import axios from '../../utils/axios';
+import PostView from './components/PostView';
+import Theme from '../../Theme'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        //height: 'calc(100% - 70px)',
-        //overflow: 'scroll',
-        height: '100vh',
-    },
-    appBar: { 
-        top: 'auto',
-        bottom: 0,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    button: {
-        marginRight: theme.spacing(2)
-    }
-}));
+function Post() {
+    const [post, setPost] = useState([]);
+    const params = useParams();
 
-export default function NewPost() {
-    const classes = useStyles();
+    const getPost = useCallback(async () => {
+        const feed = await axios.get(`/api/post/${params.slug}`);
+        setPost(feed.data);
+    }, [setPost, params.slug]);
 
-    const ctx = usePost();
-    const handleSaveDraft = () => {
-        // acessar backend e salvar rascunho
-    }
-
-    const handlePublish = () => {
-        // acessar backend e salvar rascunho
-    }
-
+    useEffect(() => {
+        getPost();
+    }, [getPost]);
+    
     return (
         <Theme>
-            <PostProvider>
-                <Container>
-                    <h1>Novo post</h1>
-                    <Box display="flex" className={classes.root}>
-                        <Box width="50%" height="100%" padding={2}>
-                            <Editor />
-                        </Box>
-                        <Box width="50%" height="100%" padding={2}>
-                            <Preview />
-                        </Box>
-                    </Box>
-                    <Toolbar className={classes.appBar}>
-                        <Button className={classes.button}>Salvar rascunho</Button>
-                        <Button color="secondary" variant="outlined">Publicar</Button>
-                    </Toolbar>
-                </Container>
-            </PostProvider>
+            <PostView post={post} />;
         </Theme>
     )
+
 }
+
+export default Post;

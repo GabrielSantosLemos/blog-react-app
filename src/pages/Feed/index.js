@@ -11,7 +11,6 @@ const useStyles = makeStyles(() => ({
     }
 }));
   
-
 export default function Feed() {
 
     const classes = useStyles();
