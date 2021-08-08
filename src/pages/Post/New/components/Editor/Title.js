@@ -9,12 +9,14 @@ export default function Title() {
     } = useNewContext();
 
     return (
-        <TextField
-            id="title"
-            placeholder="Título"
-            fullWidth
-            value={title}
-            onChange={setTitle}
+        <TextField 
+        id="title"
+        label="Título" 
+        placeholder="Título"
+        variant="filled"
+        fullWidth
+        value={title}
+        onChange={setTitle}
         />
     )
 }

@@ -19,6 +19,8 @@ class AuthService {
         })
     }
 
+    signUp = (fullName, email, password) => {};
+
     signInwithToken = () => {
         return new Promise((resolve, reject) => {
             axios.post('/api/login/me') // envio o token pelo header

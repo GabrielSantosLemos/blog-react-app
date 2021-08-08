@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, Box } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDropzone } from 'react-dropzone';
@@ -10,14 +10,6 @@ import Title from './Title';
 const useStyles = makeStyles((theme) => ({
     image: {
         height: 100
-    },
-    textArea: {
-        width: "100%",
-        height: "100%",
-        resize: "none",
-        border: "none",
-        outline: "none",
-        fontSize: 15
     }
 }));
 
@@ -67,27 +59,34 @@ export default function Editor() {
 
             {image && <img className={classes.image} src={image} alt="any" />}
 
-            <Title/>
-            
-            <Autocomplete
-                multiple
-                limitTags={2}
-                id="multiple-limit-tags"
-                options={arrayTags}
-                getOptionLabel={(option) => option.title}
-                value={tags}
-                onChange={setTags}
-                renderInput={(params) => (
-                    <TextField {...params} variant="standard" placeholder="tags" />
-                )}
-            />
+            <Box mb={2}>
+                <Title />
+            </Box>
 
-            <textarea
-                className={classes.textArea}
-                value={markdownText}
-                onChange={setMarkdownText}
-            >
-            </textarea>
+            <Box mb={2}>
+                <TextField
+                    id="filled-multiline-static"
+                    label="Texto"
+                    multiline
+                    fullWidth
+                    variant="filled"
+                    value={markdownText}
+                    onChange={setMarkdownText}
+                />
+            </Box>
+
+            <Box mb={2}>
+                <Autocomplete
+                    multiple
+                    id="fixed-tags-demo"
+                    onChange={setTags}
+                    getOptionLabel={(option) => option.title}
+                    options={arrayTags}
+                    renderInput={(params) => (
+                        <TextField {...params} variant="filled" label="Tags" placeholder="tags" />
+                    )}
+                />
+            </Box>
         </>
     )
 }

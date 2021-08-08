@@ -33,6 +33,7 @@ function Header() {
           align="left"
           noWrap
           className={classes.toolbarTitle}
+          color="textPrimary"
         >
           Blog
         </Typography>

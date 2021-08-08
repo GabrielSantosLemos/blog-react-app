@@ -5,13 +5,12 @@ import Theme from '../../../Theme';
 import Editor from './components/Editor/index';
 import Preview from './components/Preview';
 import { PostProvider } from './Context';
-import { useNewContext } from './Context';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         //height: 'calc(100% - 70px)',
         //overflow: 'scroll',
-        height: '100vh',
+        //height: '100vh',
     },
     appBar: { 
         top: 'auto',
@@ -27,20 +26,19 @@ const useStyles = makeStyles((theme) => ({
 export default function New() {
     const classes = useStyles();
 
-    const ctx = useNewContext();
-    const handleSaveDraft = () => {
-        // acessar backend e salvar rascunho
-    }
+    //const ctx = useNewContext();
+    //const handleSaveDraft = () => {
+    //    // acessar backend e salvar rascunho
+    //}
 
-    const handlePublish = () => {
-        // acessar backend e salvar rascunho
-    }
+    //const handlePublish = () => {
+    //    // acessar backend e salvar rascunho
+    //}
 
     return (
         <Theme>
             <PostProvider>
                 <Container>
-                    <h1>Novo post</h1>
                     <Box display="flex" className={classes.root}>
                         <Box width="50%" height="100%" padding={2}>
                             <Editor />

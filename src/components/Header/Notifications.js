@@ -59,7 +59,6 @@ export default function Notification () {
           <IconButton
             ref={ref}
             onClick={handleOpen}
-            color="inherit"
           >
             <NotificationsIcon />
           </IconButton>

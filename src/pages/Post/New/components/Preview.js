@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
     imagePreview: {
         width: '100%'
     },
+    markdownText: {
+        color: theme.palette.text.primary
+    }
 }));
 
 export default function Preview() {
@@ -36,15 +39,15 @@ export default function Preview() {
                     />
                 </Box>
                 <Box>
-                    <Typography>{account.user?.name}</Typography>
+                    <Typography color="textPrimary">{account.user?.name}</Typography>
                     <Typography color="textSecondary">10 meses atrás</Typography>
                 </Box>
             </Box>
-            <Typography variant="h2">{title}</Typography>
+            <Typography variant="h2" color="textPrimary">{title}</Typography>
             {image && <img className={classes.imagePreview} src={image} alt="any" />}
-            <Typography variant="h6">{tags.map(tag => tag.title).join(',')}</Typography>
+            <Typography variant="h6" color="textPrimary">{tags.map(tag => tag.title).join(',')}</Typography>
             <Divider />
-            <ReactMarkdown>{markdownText}</ReactMarkdown>
+            <ReactMarkdown className={classes.markdownText}>{markdownText}</ReactMarkdown>
         </>
     )
 }
