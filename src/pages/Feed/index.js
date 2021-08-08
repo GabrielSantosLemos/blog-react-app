@@ -5,10 +5,9 @@ import Theme from "../../Theme";
 import PostCard from './components/PostCard';
 import NavBar from './components/NavBar';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
-        width: '100%',
-        backgroundColor: theme.palette.background.dark,
+        width: '100%'
     }
 }));
   
@@ -34,7 +33,7 @@ export default function Feed() {
                     <Hidden smDown>
                         <NavBar />
                     </Hidden>
-                    <div>
+                    <div className={classes.root}>
                         {posts.map((post) => (
                             <PostCard key={post.id} post={post} />
                         ))}

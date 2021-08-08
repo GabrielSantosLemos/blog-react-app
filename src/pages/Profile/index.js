@@ -11,6 +11,7 @@ import { useParams } from 'react-router';
 import AccountProfile from './AccountProfile';
 import Posts from './Posts';
 import Connections from './Connections';
+import Theme from '../../Theme';
 
 function Profile() {
 
@@ -37,25 +38,27 @@ function Profile() {
   }
 
   return (
-     <Container maxWidth="lg">
-       <Grid container spacing={4}>
-         <Grid item md={4}>
-           <AccountProfile />
-         </Grid>
-         <Grid item md={8}>
-           <Tabs value={tab} onChange={handleChange}>
-             <Tab label="Post" />
-             <Tab label="Conexões" />
-           </Tabs>
-           <TabPanel value={tab} index={0}>
-             <Posts />
-           </TabPanel>
-           <TabPanel value={tab} index={1}>
-             <Connections />
-           </TabPanel>
-         </Grid>
-       </Grid>
-    </Container>
+    <Theme>
+      <Container maxWidth="lg">
+        <Grid container spacing={4}>
+          <Grid item md={4}>
+            <AccountProfile />
+          </Grid>
+          <Grid item md={8}>
+            <Tabs value={tab} onChange={handleChange}>
+              <Tab label="Post" />
+              <Tab label="Conexões" />
+            </Tabs>
+            <TabPanel value={tab} index={0}>
+              <Posts />
+            </TabPanel>
+            <TabPanel value={tab} index={1}>
+              <Connections />
+            </TabPanel>
+          </Grid>
+        </Grid>
+      </Container>
+    </Theme>
   );
 }
 

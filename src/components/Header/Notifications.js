@@ -18,11 +18,6 @@ import PeopleIcon from '@material-ui/icons/People';
 import { getNotifications } from '../../store/actions/notificationsActions';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
-  },
   icon: {
     background: theme.palette.secondary.main,
     color: theme.palette.secondary.contrastText
@@ -81,7 +76,7 @@ export default function Notification () {
                 Notificações
               </Typography>
             </Box>
-            <List className={classes.root}>
+            <List>
             {notifications.map((notification) => {
               const Icon = iconsMap[notification.type];
               return (
