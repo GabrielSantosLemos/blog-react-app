@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import Notification from '../Header/Notifications';
 import WritePost from '../Header/WritePost';
 import Account from '../Header/Account';
+import Settings from '../Header/Settings';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -38,6 +39,7 @@ function Header() {
           </Typography>
           <WritePost />
           <Notification/>
+          <Settings />
           <Account />
         </Toolbar>
       </Container>

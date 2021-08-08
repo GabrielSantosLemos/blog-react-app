@@ -1,19 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { Provider } from 'react-redux';
+
 import App from './App';
+import store from './store';
+import { SettingsProvider } from './SettingsContext';
+import { getSettings } from './utils/settings';
 
-// remove alerta de erro Warning: findDOMNode is deprecated in StrictMode
-import { ThemeProvider, unstable_createMuiStrictModeTheme } from '@material-ui/core/styles';
-
-const theme = unstable_createMuiStrictModeTheme();
+const settings = getSettings();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
-    </ThemeProvider>
+    <CssBaseline />
+    <Provider store={store}>
+      <SettingsProvider settings={settings}>
+        <App />
+      </SettingsProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
