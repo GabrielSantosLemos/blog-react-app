@@ -48,8 +48,7 @@ export default function Account () {
         open={isMenuOpen}
         onClose={handleMenuClose}
         >
-          <MenuItem>Perfil</MenuItem>
-          <MenuItem>Meus Favoritos</MenuItem>
+          <MenuItem onClick={() => navigate(`/${account.user?.username}`)}>Perfil</MenuItem>
           <MenuItem>Meus Posts</MenuItem>
           <MenuItem>Minha conexõs</MenuItem>
           <MenuItem onClick={handleSignOut}>Sair</MenuItem>
@@ -63,8 +62,8 @@ export default function Account () {
       open={isMenuOpen}
       onClose={handleMenuClose}
       >
-        <MenuItem>Registrar</MenuItem>
-        <MenuItem>Entrar</MenuItem>
+        <MenuItem onClick={() => navigate('/sign-up')}>Registrar</MenuItem>
+        <MenuItem onClick={() => navigate('/sign-in') }>Entrar</MenuItem>
       </Menu>
     }
   </>
